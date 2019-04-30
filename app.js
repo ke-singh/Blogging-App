@@ -10,11 +10,11 @@ myApp.config(function ($routeProvider) {
                   controller: 'myController'
             })
             .when('/blog', {
-                  resolve:{
+                  resolve: {
 
 
-                        "check":function($location,$rootScope){
-                              if(!$rootScope.stat){
+                        "check": function ($location, $rootScope) {
+                              if (!$rootScope.stat) {
                                     $location.path('/');
                                     alert("Login first!");
                               }
@@ -29,22 +29,24 @@ myApp.config(function ($routeProvider) {
 
 
 //LOGIN PAGE CONTROLLER
-myApp.controller('myController', ['$scope', '$http', '$location','$rootScope', function ($scope, $http, $location, $rootScope) {
+myApp.controller('myController', ['$scope', '$http', '$location', '$rootScope', function ($scope, $http, $location, $rootScope) {
 
-            $scope.mydata;
-            $http.get("pages/aadmi.json")
-              .then(function (response) {
-                $scope.mydata = response.data.records;
-                                        
+      $scope.mydata;
+      $http.get("pages/aadmi.json")
+            .then(function (response) {
+                  $scope.mydata = response.data.records;
+
             });
-                                  
-                                  
-            $scope.submit = function () {
-          
+
+
+      $scope.submit = function () {
+
             angular.forEach($scope.mydata, function (item) {
                   // alert(item.email);  
                   if ((item.Email == $scope.Obj.username) && (item.Password == $scope.Obj.password)) {
                         $rootScope.stat = true;
+                        $rootScope.user = item.Name;
+
                   }
 
 
@@ -66,7 +68,7 @@ myApp.controller('myController', ['$scope', '$http', '$location','$rootScope', f
             "password": ""
 
       };
-      
+
 
 
 
@@ -75,18 +77,45 @@ myApp.controller('myController', ['$scope', '$http', '$location','$rootScope', f
 
 
 //BLOG PAGE CONTROLLER
-myApp.controller('forecastController', ['$scope', '$rootScope', '$location', function ($scope, $rootScope,$location) {
+myApp.controller('forecastController', ['$scope', '$rootScope', '$location', '$http', function ($scope, $rootScope, $location, $http) {
 
-      
-      $scope.submit= function(){
-           $rootScope.stat= false;
-           $location.path("/");
-           
 
-                                        };
+      $scope.submit = function () {
+            $rootScope.stat = false;
+            $location.path("/");
 
+
+      };
+
+      $http.get("pages/posts.json")
+            .then(function (response) {
+                  $scope.myposts = response.data.posts;
+
+            });
+
+ 
 }]);
 
+
+
+
+
+
+
+
+myApp.directive("blogMaterial", function () {
+
+      return {
+            templateUrl: 'directives/material.html',
+            replace: true
+
+
+
+      }
+
+
+
+});
 
 
 

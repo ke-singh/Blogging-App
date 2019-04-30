@@ -1,0 +1,17 @@
+<div class="container mt-5" ng-repeat="post in myposts">
+    <div class="border border-success">
+        <div class="p-3">
+            {{post.Text}}
+
+
+        </div>
+        <div class="p-1">
+            - By {{post.By}}.
+        </div>
+        <div ng-if="post.By === user">
+            <button type="button" class="btn btn-danger float-sm-right">Delete</button>
+        </div>
+
+    </div>
+
+</div>
