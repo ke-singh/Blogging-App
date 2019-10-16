@@ -1,0 +1,63 @@
+.margin-left-5px {
+  margin-left: 5px;
+}
+
+.italic {
+  font-style: italic;
+}
+
+body {
+  background-color: #20466c;
+}
+
+h1.display-4  {
+  text-align: center;
+  color: #87ceeb;
+}
+
+h3, h1 {
+  color: #87ceeb;
+}
+
+.list-group-item {
+  background-color: #20466c;
+}
+
+li a {
+  color: #bec6ce;
+}
+
+li a:hover {
+  color: #fff;
+}
+
+.white-line {
+  background-color: #fff;
+}
+
+.new-link {
+  margin-top: 10px;
+}
+
+.new-link a {
+  color: #fff;
+}
+
+label {
+  color: #87ceeb;
+}
+
+.text-help.form-control-label {
+  color: #dcdcdc;
+  font-style: italic;
+}
+
+.invalid label:after {
+  content: '*';
+  color: red;
+  margin-left: 5px;
+}
+
+.container {
+  margin-top: 25px;
+}
